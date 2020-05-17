@@ -17,10 +17,22 @@ public class Process extends UntypedAbstractActor {
     private final int N;//number of processes
     private final int id;//id of current process
     private Members processes;//other processes' references
+    private int ballot;
+    private String proposal;
+    private int readballot;
+    private int imposeballot;
+    private String estimate;
+    private int states[][] ;
 
     public Process(int ID, int nb) {
         N = nb;
         id = ID;
+        ballot =id-N;
+        proposal=null;
+        readballot=0;
+        imposeballot=id-N;
+        estimate=null;
+        states = new int[N][2];
     }
     
     public String toString() {
@@ -42,6 +54,9 @@ public class Process extends UntypedAbstractActor {
               Members m = (Members) message;
               processes = m;
               log.info("p" + self().path().name() + " received processes info");
+          }
+          else if (true){
+
           }
       
     }
