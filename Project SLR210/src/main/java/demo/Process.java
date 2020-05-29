@@ -116,6 +116,11 @@ public class Process extends UntypedAbstractActor {
         } else if (message instanceof ReadMsg) {
             ReadMsg m = (ReadMsg) message;
             this.readReceived(m.ballot, getSender());
-        } 
+        } else if (message instanceof GatherMsg) {
+        } else if (message instanceof ImposeMsg) {
+        } else if (message instanceof DecideMsg) {
+        } else if (message instanceof AbortMsg) {
+        } else if (message instanceof AckMsg) {
+        }
     }
 }
