@@ -42,7 +42,11 @@ public class Process extends UntypedAbstractActor {
         }
     }
     public static final class DecideMsg {
-        public DecideMsg() {}
+        private int value;
+        public int get_value() {return value;}
+        public DecideMsg(int value) {
+            value = value > 0;//value can only be 0 or 1
+        }
     }
     public static final class AbortMsg {
         public AbortMsg() {}
