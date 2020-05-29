@@ -53,6 +53,11 @@ public class Process extends UntypedAbstractActor {
         public int get_ballot() {return ballot;}
         public AbortMsg(int ballot) {ballot = ballot;}
     }
+    public static final class AckMsg {
+        private int ballot;
+        public int get_ballot() {return ballot;}
+        public AckMsg(int ballot) {ballot = ballot;}
+    }
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);// Logger attached to actor
     private final int N;//number of processes
     private final int id;//id of current process
