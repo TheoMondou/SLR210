@@ -19,7 +19,17 @@ public class Process extends UntypedAbstractActor {
         public ReadMsg(int ballot) {ballot = ballot;}
     }
     public static final class GatherMsg {
-        public GatherMsg() {}
+        private int ballot;
+        private int imposeballot;
+        private int estimate;
+        public int get_ballot() {return ballot;}
+        public int get_imposeballot() {return imposeballot;}
+        public int get_estimate() {return estimate;}
+        public GatherMsg(int ballot, int imposeballot, int estimate) {
+            ballot = ballot;
+            imposeballot = imposeballot;
+            estimate = estimate;
+        }
     }
     public static final class ImposeMsg {
         public ImposeMsg() {}
