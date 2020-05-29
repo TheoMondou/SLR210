@@ -32,7 +32,14 @@ public class Process extends UntypedAbstractActor {
         }
     }
     public static final class ImposeMsg {
-        public ImposeMsg() {}
+        private int ballot;
+        private int value;
+        public int get_ballot() {return ballot;}
+        public int get_value() {return value;}
+        public ImposeMsg(int ballot, int value) {
+            ballot = ballot;
+            value = value > 0;//value can only be 0 or 1
+        }
     }
     public static final class DecideMsg {
         public DecideMsg() {}
