@@ -62,11 +62,11 @@ public class Process extends UntypedAbstractActor {
     private final int N;//number of processes
     private final int id;//id of current process
     private Members processes;//other processes' references
+    private Integer proposal;
     private int ballot;
-    private String proposal;
     private int readballot;
     private int imposeballot;
-    private String estimate;
+    private Integer estimate;
     private int states[][] ;
 
     public Process(int ID, int nb) {
@@ -81,7 +81,7 @@ public class Process extends UntypedAbstractActor {
     }
     
     public String toString() {
-        return "Process{" + "id=" + id ;
+        return "Process{" + " id = " + id + " };
     }
 
     /**
@@ -93,16 +93,29 @@ public class Process extends UntypedAbstractActor {
         });
     }
     
-    public void onReceive(Object message) throws Throwable {
-    	
-          if (message instanceof Members) {//save the system's info
-              Members m = (Members) message;
-              processes = m;
-              log.info("p" + self().path().name() + " received processes info");
-          }
-          else if (true){
+    private void ofconsProposeReceived(Integer v) {
+        proposal = v;
+        for (ActorRef actor : processes.references) {
+            actor.tell(new ReadMsg(ballot), this.getSelf());
+            log.info("Read ballot " + ballot + " msg: p" + self().path().name() + " -> p" + actor.path().name());
+        }
+    }
 
-          }
-      
+    private void readReceived(int newBallot, ActorRef pj) {
+            log.info("read received " + self().path().name() );
+    }
+
+    public void onReceive(Object message) throws Throwable {
+        if (message instanceof Members) {//save the system's info
+            Members m = (Members) message;
+            processes = m;
+            log.info("p" + self().path().name() + " received processes info");
+        } else if (message instanceof OfconsProposerMsg) {
+            OfconsProposerMsg m = (OfconsProposerMsg) message;
+            this.ofconsProposeReceived(m.v);
+        } else if (message instanceof ReadMsg) {
+            ReadMsg m = (ReadMsg) message;
+            this.readReceived(m.ballot, getSender());
+        } 
     }
 }
