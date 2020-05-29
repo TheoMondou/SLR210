@@ -13,6 +13,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Process extends UntypedAbstractActor {
+    public static final class ReadMsg {
+        public ReadMsg() {}
+    }
+    public static final class GatherMsg {
+    }
+    public static final class ImposeMsg {
+    }
+    public static final class DecideMsg {
+    }
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);// Logger attached to actor
     private final int N;//number of processes
     private final int id;//id of current process
