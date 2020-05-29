@@ -22,6 +22,8 @@ public class Process extends UntypedAbstractActor {
     }
     public static final class DecideMsg {
     }
+    public static final class AbortMsg {
+    }
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);// Logger attached to actor
     private final int N;//number of processes
     private final int id;//id of current process
