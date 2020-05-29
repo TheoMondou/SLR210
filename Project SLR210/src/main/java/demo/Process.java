@@ -49,7 +49,9 @@ public class Process extends UntypedAbstractActor {
         }
     }
     public static final class AbortMsg {
-        public AbortMsg() {}
+        private int ballot;
+        public int get_ballot() {return ballot;}
+        public AbortMsg(int ballot) {ballot = ballot;}
     }
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);// Logger attached to actor
     private final int N;//number of processes
