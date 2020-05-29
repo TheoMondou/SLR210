@@ -2,9 +2,9 @@ package com.example;
 
 public class OfconsProposerMsg {
 	
-	public String message;
+	public Integer message;
 	
-	public OfconsProposerMsg(String message) {
+	public OfconsProposerMsg(Integer message) {
 		this.message = message;
 	}
 
