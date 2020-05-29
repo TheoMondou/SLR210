@@ -14,15 +14,21 @@ import java.util.logging.Logger;
 
 public class Process extends UntypedAbstractActor {
     public static final class ReadMsg {
-        public ReadMsg() {}
+        private int ballot;
+        public int get_ballot() {return ballot;}
+        public ReadMsg(int ballot) {ballot = ballot;}
     }
     public static final class GatherMsg {
+        public GatherMsg() {}
     }
     public static final class ImposeMsg {
+        public ImposeMsg() {}
     }
     public static final class DecideMsg {
+        public DecideMsg() {}
     }
     public static final class AbortMsg {
+        public AbortMsg() {}
     }
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);// Logger attached to actor
     private final int N;//number of processes
