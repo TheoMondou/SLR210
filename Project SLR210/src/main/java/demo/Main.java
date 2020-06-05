@@ -43,7 +43,7 @@ public class Main {
         }
 
         Thread.sleep((long) (tle*1000));
-        for (int i=0;i<N-1;i++){                                      //le (f+1) est le leader
+        for (int i=0;i<N-1;i++){                                      //le (N-1) est le leader
           references.get(i).tell("hold", ActorRef.noSender());
         }
 
