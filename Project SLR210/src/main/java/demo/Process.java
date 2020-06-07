@@ -231,6 +231,7 @@ public class Process extends UntypedAbstractActor {
         log.info(self().path().name()+" decide: " + value);
         this.propose_launched=false;
         this.value_decided=true;
+        
         /*                                                      //vraiment utile vu que tous les acteurs sont connectés ?
         for (ActorRef actor : this.processes.references){
             actor.tell(new DecideMsg(value), getSelf());

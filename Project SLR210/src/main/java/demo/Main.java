@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 public class Main {
 
     public static int N = 100;
-    public static int f=3;
-    public static double tle=0.5;
+    public static int f=0;
+    public static double tle=50.0;
     public static double probability_failure=0.0001;
 
 
@@ -38,6 +38,7 @@ public class Main {
         for (int i=0;i<f;i++){
             references.get(i).tell("crash", ActorRef.noSender());
         }
+        system.log().info("START");
         for (int i=0;i<N;i++){
           references.get(i).tell("launch", ActorRef.noSender());
         }
